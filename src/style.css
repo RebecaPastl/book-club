@@ -1,0 +1,385 @@
+:root {
+    --primary-colour: #fff580;
+    --secondary-colour: #faf7d2;
+    --primary-background-colour: #000000;
+    --secondary-background-colour: #424242;
+    --accent-background-colour: #242424;
+    --half-small-width:320px;
+    ---a-third-width:500px;
+}
+
+html {
+    font-family: Montserrat, sans-serif;
+}
+
+body {
+    background-color: var(--primary-background-colour);
+    color:var(--primary-colour);
+    margin:0;
+}
+
+p {
+    padding:0;
+    margin:0;
+    font-size:15px;
+}
+
+h2 {
+    margin-top:0;
+}
+
+
+a { 
+    text-decoration: none;
+    color:var(--primary-colour);
+    margin:0;
+}
+
+a:hover {
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+img {
+    border: 1px solid var(--primary-colour);
+}
+
+/*form*/
+fieldset {
+    border-color:var(--primary-colour);
+    border-radius: 15px;
+    margin-bottom:20px;
+}
+
+legend{
+    text-align: center;
+    margin-bottom:10px;
+}
+
+textarea {
+    display: block;
+    width: 95%;
+    height:50px;
+    resize: none;
+    border-radius: 15px;
+    border:none;
+    background-color:var(--secondary-colour);
+    padding:10px;
+    margin-bottom:10px;
+}
+
+input {
+    display: block;
+    background:var(--secondary-colour);
+    border-radius: 15px;
+    border:none;
+    margin:10px 0;
+    width:var(--half-small-width);
+    padding:10px;
+}
+
+select {
+    display: block;
+    background-color:var(--secondary-colour);
+    max-width:15vw;
+    border-radius: 5px;
+    padding:10px;
+    border:none;
+    margin:10px 0;
+ }
+
+.message {
+    font-style: italic;
+    display:block;
+    font-size:15px;
+    margin-bottom:10px;
+}
+
+.button {
+    display: block;
+    max-width:var(--half-small-width);
+    background:var(--secondary-background-colour);
+    color:var(--secondary-colour);
+    border-radius: 15px;
+    margin:20px 10px;
+    padding:10px;
+    border:none;
+    transition: 0.2s;
+}
+
+.button:hover{
+    cursor:pointer;
+    background:var(--primary-background-colour);
+    transform: translateY(-2px);
+}
+
+/*header*/
+.header {
+    color:var(--primary-background-colour);
+    /*from Pixabay at Pexels (https://www.pexels.com/photo/books-in-black-wooden-book-shelf-159711)*/
+    background-image: url('/images/banner.jpg');
+    height: 260px;
+}
+
+.header h1 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-align: center;
+    font-size: 100px;
+    padding:20px 0;
+    letter-spacing:10px;
+    margin: 0;
+}
+
+.artist {   
+    right: 0;
+    font-size: 80%;
+    text-align:right;
+    color:var(--secondary-colour);
+}
+
+/*Welcome to page*/
+.welcome {   
+    height:70px;
+    text-align: center;
+    background-color:var(--secondary-background-colour);
+}
+
+.welcome p {
+    font-weight: bold;
+    font-size: 15px;
+    padding-top: 30px;
+    color:var(--primary-colour);
+}
+
+/*Wrapper*/
+.wrapper {
+    display:block;
+    width:95vw;
+    margin: 20px auto;
+    padding-top:10px;
+}
+
+/*List items*/
+.listItem {
+    display: block;
+    clear:both;
+    min-height:150px;
+    margin:30px 0;
+    padding: 10px;
+}
+
+.listItem:hover {
+    background-color:var(--secondary-background-colour);
+}
+
+
+.listItem h3, h2, .bookUnit h3, h2 {
+    margin:0;
+}
+
+/*User*/
+.user {
+    float: left;
+    background-color:var(--accent-background-colour);
+    padding: 10px;
+    padding-top:0;
+    width:360px;
+}
+
+.userImage {
+    width: 8rem;
+    height: 8rem;
+    float:left;
+    margin-right:10px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+/*Book*/
+.bookMain{
+    width:360px;
+}
+
+.book {
+    float: right;
+    background-color:var(--accent-background-colour);
+    padding: 10px;
+    padding-top: 0;
+}
+
+.cover {
+    width: 5rem; 
+    height: 8rem;
+    float:left;
+    margin-right:10px;
+    border-radius: 15px;
+}
+
+/*Book unit accessed*/
+.bookUnit{
+    clear:both;
+    background-color:var(--accent-background-colour);
+    padding:20px;
+}
+
+/*review*/
+.review {
+    margin-top:20px;
+    padding-top:10px;
+    border-top:1px solid var(--primary-colour);
+    clear:both;
+    float:left;
+    width:65vw;
+    
+}
+
+.review li {
+    list-style-type: none;
+    margin-bottom:20px;
+    padding: 20px;
+    border-radius: 15px;
+    margin-left:-35px;
+    text-align: center;
+    background-color: var(--secondary-background-colour);
+    border: 1px solid var(--primary-colour);
+}
+
+.review li p {
+    text-align: right;
+    margin-top:10px;
+}
+
+/*Footer*/
+.footer {
+    clear:both;
+    display:block;
+    width:100vw;
+    font-size:10px;
+    text-align:center;
+    margin: auto;
+    padding:10px 0;
+    background-color:var(--secondary-background-colour);
+}
+
+
+
+
+@media only screen and (min-width: 1200px) {
+    
+    .user{
+        margin-right:20px;
+    }
+    
+    .book {
+        float: left;
+        heigth:711px
+    }
+    
+    .bookUnit{
+        float:left;
+        height: 600px;
+        width: 90%;
+        clear:none;
+    }
+    
+    .review{
+        width:100%;
+    }
+    
+    .bookMain{
+        float:left;
+    }
+    
+    .userList {
+        height: 300px;
+        overflow-y:scroll;
+    }
+    
+    .bookList{
+        height: 600px;
+        float:right;
+        margin-left:20px;
+        overflow-y:scroll;
+        width: 325px;
+    }
+    
+    ul {
+        height: 270px;
+    }
+    
+    body {
+      scrollbar-width: thin;
+      scrollbar-color: var(--secondary-background-colour) var(--primary-background-colour);
+    }
+    
+}
+
+@media only screen and (min-width: 1800px) {
+    
+    .user{
+        margin-right:20px;
+    }
+    
+    .book {
+        float: left;
+    }
+    
+    .bookUnit{
+        height: 600px;
+        float:right;
+        width: 35%;
+        clear:none;
+    }
+    
+    .review{
+        width:100%;
+    }
+    
+    .bookMain{
+        float:left;
+    }
+    
+    .userList {
+        height: 300px;
+        overflow-y:scroll;
+    }
+    
+    .bookList{
+        height: 600px;
+        float:right;
+        margin-left:20px;
+        overflow-y:scroll;
+        width: 325px;
+    }
+    
+    .reviewText{
+        width: 400px;
+        display: inline;
+        height: 70px;
+    }
+    
+    .reviewFloat{
+        float:right;
+    }
+    
+    .reviewFloat .button {
+        width:200px;
+        margin:10px 0;
+    }
+    
+    .reviewUser {
+        width: 200px;
+        margin: 0;
+    }
+    
+    ul {
+        height: 270px;
+        overflow-y:scroll;
+    }
+    
+    body {
+      scrollbar-width: thin;
+      scrollbar-color: var(--secondary-background-colour) var(--primary-background-colour);
+    }
+
+}
