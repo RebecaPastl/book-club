@@ -22,8 +22,7 @@ class BookReview extends React.Component {
             
         }
         
-        this.handleReviewChange = this.handleReviewChange.bind(this); // refers to this of Review
-        this.handleUserChange = this.handleUserChange.bind(this); // refers to this of Review
+        this.handleChange = this.handleChange.bind(this); // refers to this of Review
         this.reviewSubmit = this.reviewSubmit.bind(this); // refers to this of Review
         
     }
