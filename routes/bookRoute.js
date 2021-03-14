@@ -8,7 +8,7 @@ const {bookValidators} = require('../validators/bookValidators.js');
 router
 .get('/', getBooks)
 .get('/:id', getBook)
-.get('/:id/reviews', getReview) //user can not access Reviews without first accessing the book, otherwise the user'll not know t which book the review is related
+.get('/:id/reviews', getReview) //user can not access Reviews without first accessing the book, otherwise the user'll not know to which book the review is related
 .post('/', bookValidators, postBook)
 .post('/:id', reviewValidators, postReview);
 
