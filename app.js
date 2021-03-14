@@ -18,5 +18,5 @@ connection.once('open', ()=>{
 //create a router object that uses a middleware to help store the routs in another file
 const router = require("./routes/index.js");
 //targeting the middleware for a particular family of endpoints (/api/v1 family)
-//it is implied that router.get('/heroes') already route to /api/heroes 
+//it is implied that router.get('/books') already route to /api/books 
 app.use("/api/v1", router);
