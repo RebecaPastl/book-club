@@ -116,14 +116,7 @@ class BookAdd extends React.Component {
     }
 
     render() {
-        
-        //variable that receives the stored value to be attributed to the 'display' property of the list div
-        let hidden = {
-            
-            display: this.state.result
-            
-        }
-        
+                
         //render the add book form and the most recent book
         //cover field: onInput was chosen since onChange was not updating the the stated when pasting URLs to add books multiple times in a row
         return <>        
