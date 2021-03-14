@@ -1,82 +1,73 @@
-Book Club
+# Book Club
 
+## Table of Contents
+* [Description](#description)
+* [Requirements](#requirements)
+* [Deployment](#deployment)
+* [Author](#author)
+* [License](#license)
+* [Acknowledgements](#acknowledgments)
+* [Citations](#citations)
+* [Manual](#manual)
 
-Description:
+## Description
 
 The Book Club is a one-page website tha allows users to search for books available for trading or borrowing and writing reviews on the books.
 
-----------
+## Requirements
 
-Requirements:
-
-Axios
-Babel-loader
-Css-loader
-Dotenv
-Express
-Express-validator
-Mongoose
-Nodemon (package.json -> under scripts: "dev" : "nodemon app.js")
-React
-ReactDOM
-Style-loader 
-Validator
-Webpack (package.json -> under scripts: "watch" : "webpack --watch")
-Webpack-cli 
-@babel/preset-react 
-@babel/preset-env 
-@babel/core
+- Axios
+- Babel-loader
+- Css-loader
+- Dotenv
+- Express
+- Express-validator
+- Mongoose
+- Nodemon (package.json -> under scripts: "dev" : "nodemon app.js")
+- React
+- ReactDOM
+- Style-loader 
+- Validator
+- Webpack (package.json -> under scripts: "watch" : "webpack --watch")
+- Webpack-cli 
+- @babel/preset-react 
+- @babel/preset-env 
+- @babel/core
 
 installation express terminal: npm install express nodemon mongoose dotenv validator express-validator axios react react-dom
 installation react terminal: npm install webpack webpack-cli css-loader style-loader babel-loader @babel/preset-react @babel/preset-env @babel/core 
 
-----------
-
-Depoyment:
+## Deployment
 
 Heroku (package.json -> under scripts: "start" : "node app.js")
 
-----------
-
-Author/Developer:
+## Author
 
 Rebeca Pastl
 
-----------
-
-Instructor: 
-
-Jordan Miller
-
-----------
-
-License: 
+## License
 
 ISC
 
-----------
+## Acknowledgments
 
-Acknowledgments:
+This project was developed during CPSC 2600 classes, under instructor Jordan Miller, Final Project, Fall 2020.
 
-This project was developed during CPSC 2600 classes, Final Project, Fall 2020.
+## Citations
 
-----------
-
-Citations and references:
-
-•	Handling multiple input changes (BookAdd.js lines 70 to 82) 
+-	Handling multiple input changes (BookAdd.js lines 70 to 82) 
 
 Source: Stack Overflow
 Author: Reply by Christopher Davies (thrid reply) on 14.mar.2016
 Web address: https://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
 
-•	Banner image (used on file Style.css line 94, stored on folder public > images > banner.jpg) 
+-	Banner image (used on file Style.css line 94, stored on folder public > images > banner.jpg) 
 
 Source: Pexels (Free stock photos)
 Author: Pixabay
 Web address: https://www.pexels.com/photo/books-in-black-wooden-book-shelf-159711
 
-•	User images (users submitted by the application and stored at the bookclub database on MongoDB)
+-	User images (users submitted by the application and stored at the bookclub database on MongoDB)
 
 Source: Pexels (Free stock photos)
 Author: Laura Garcia
@@ -94,19 +85,17 @@ Source: Pexels (Free stock photos)
 Author: Bruno Thethe
 Web address: https://www.pexels.com/photo/man-leaning-on-red-cushion-2122850/
 
-•	Book images (books submitted by the application and stored at the bookclub database on MongoDB)
+-	Book images (books submitted by the application and stored at the bookclub database on MongoDB)
 
 The Silmarillion and the Hobbit covers: personal collection
 
-----------
-
-User Manual:
+## Manual
 
 The Book Club is a one-page website. All the functionalities of the website are on the home page. There are two main categories on the Book Club website: Books and Users.
 
 In this user manual, we will talk about how both can be used.
 
-USER
+### USER
 
 In this category, you can see all users registered in the Book Clube and add new users.
 
@@ -116,16 +105,16 @@ To see all users, click on the Show all users button on the top of the users’ 
 
 Add a new user:
 
-•	Name field: 
+-	Name field: 
 Insert the username (with a minimum length of 5 characters) into the field Name
-•	Avatar field:
+-	Avatar field:
 Copy the URL/URI of the image and paste it into the field Avatar (refer to the end of the manual to see how to copy the URL/URI using Chrome, Firefox and Edge)
 
 Press Submit user for the user to be saved into the Book Club database.
 
 If there are errors, they will be displayed below the Submit user button. 
 
-BOOK
+### BOOK
 
 In this category, you can see all books available in the Book Clube, the book’s reviews, add new books and reviews.
 
@@ -135,15 +124,15 @@ To see all books, click on the Show all books button on the top of the books’ 
 
 Add a new book:
 
-•	Title field: 
+-	Title field: 
 Insert the book’s name to the field Title
-•	Author field:
+-	Author field:
 Insert the author’s name to the field Author
-•	Cover field:
+-	Cover field:
 Copy the URL/URI of the image and paste it into the field Cover (refer to the end of the manual to see how to copy the URL/URI using Chrome, Firefox and Edge)
-•	Owner field:
+-	Owner field:
 Choose from the dropdown the name of the user who owns the book
-•	Availability field:
+-	Availability field:
 Choose from the dropdown if you are registering the book for trading with other users, for borrowing to other users, or if it is available for both
 
 Press Submit book for the book to be saved into the Book Club database.
@@ -158,9 +147,9 @@ To see more details about a book, click on it and a new section will open by the
 
 Add a review:
 
-•	Text field:
+-	Text field:
 Insert a review text between 5 and 300 characters
-•	User field:
+-	User field:
 Choose from the dropdown the name of the user who is writing the review
 
 Press Submit review for the review to be saved into the Book Club database.
@@ -169,8 +158,8 @@ The new review will be exhibited above all other reviews.
 
 If there are errors, they will be displayed below the text field.
 
-COPY IMAGE URL/URI
+### COPY IMAGE URL/URI
 
-Chrome: Right-click the image and select Copy image address
-Firefox: Right-click the image and select Copy Image Location
-Edge: Right-click the image and select Copy image link
+- Chrome: Right-click the image and select Copy image address
+- Firefox: Right-click the image and select Copy Image Location
+- Edge: Right-click the image and select Copy image link
