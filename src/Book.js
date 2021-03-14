@@ -26,7 +26,6 @@ class Book extends React.Component {
         
         this.handleShowBooks = this.handleShowBooks.bind(this); // refers to this of Book
         this.accessBook = this.accessBook.bind(this); // refers to this of Book
-        //this.mostRecentBook = this.mostRecentBook.bind(this); // refers to this of Book
         
     }
     
@@ -129,7 +128,6 @@ class Book extends React.Component {
             currentReview:this.state.currentReview
             
         }
-        
         
         //render the books form to add books and the recently added book (in another component), the list of books, and information about the chosen book (in another component)
         return <>
