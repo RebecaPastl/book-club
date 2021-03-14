@@ -23,36 +23,23 @@ class User extends React.Component {
         }
         
         this.handleUserSubmit = this.handleUserSubmit.bind(this); // refers to this of User
-        this.handleNameChange = this.handleNameChange.bind(this); // refers to this of User
-        this.handleAvatarChange = this.handleAvatarChange.bind(this); // refers to this of User
+        this.handleChange = this.handleChange.bind(this); // refers to this of User
         this.handleShowUsers = this.handleShowUsers.bind(this); // refers to this of User
     }
- 
-    //tracks the change in the name field, if the user is interacting with the field, the previous success or validation error message will be deleted
-    handleNameChange(event) {
+
+    //tracks changes in all input fields
+    /*from Christopher Davies at Stack Overflow (https://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler)*/
+    handleChange(event){
         
         let messagesArray = [];
         
         this.setState({
             
-            newName:event.target.value,
+            [event.target.name] : event.target.value,
+            result: 'none',
             messages:messagesArray
             
         }) 
-        
-    }
-    
-    //tracks the change in the avatar field, if the user is interacting with the field, the previous success or validation error message will be deleted
-    handleAvatarChange(event) {
-        
-        let messagesArray = [];
-        
-        this.setState({
-            
-            newAvatar:event.target.value,
-            messages:messagesArray
-            
-        })   
         
     }
     
@@ -146,9 +133,9 @@ class User extends React.Component {
                     <form onSubmit={this.handleUserSubmit}>
                             <legend>ADD A USER</legend>
                             <label htmlFor='name'>Name:</label>
-                            <input type='text' placeholder='Enter your name' id='name' name='name' onChange={this.handleNameChange} />
+                            <input type='text' placeholder='Enter your name' id='name' name='name' onChange={this.handleChange} />
                             <label htmlFor='avatar'>Avatar:</label>
-                            <input type='text' placeholder='Enter the URL to your avatar image' id='avatar' name='avatar' onInput={this.handleAvatarChange}/>
+                            <input type='text' placeholder='Enter the URL to your avatar image' id='avatar' name='avatar' onInput={this.handleChange}/>
                             <input className='button' type='submit' value='Submit user' />
                             {this.state.messages.map((message, index) => 
                                 
