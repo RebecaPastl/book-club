@@ -44,29 +44,17 @@ class BookReview extends React.Component {
         }
     }
  
-    //handle change in the textarea content
-    handleReviewChange(event) {
+    //tracks changes in all input fields
+    /*from Christopher Davies at Stack Overflow (https://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler)*/
+    handleChange(event){
         
         let messagesArray = [];
         
         this.setState({
             
-            reviewText:event.target.value,
-            messages: messagesArray
-            
-        }) 
-        
-    }
-    
-    //handle change in the dropdown content
-    handleUserChange(event) {
-        
-        let messagesArray = [];
-        
-        this.setState({
-            
-            reviewUser:event.target.value,
-            messages: messagesArray
+            [event.target.name] : event.target.value,
+            result: 'none',
+            messages:messagesArray
             
         }) 
         
@@ -144,9 +132,9 @@ class BookReview extends React.Component {
                 <h2>Reviews</h2>
                 <form onSubmit={this.reviewSubmit}>
                         <legend>ADD A REVIEW</legend>
-                        <textarea className='reviewText' onChange={this.handleReviewChange} name='text'></textarea>
+                        <textarea className='reviewText' onChange={this.handleChange} name='text'></textarea>
                         <div className='reviewFloat'>
-                            <select className='reviewUser' onChange={this.handleUserChange}>
+                            <select className='reviewUser' onChange={this.handleChange}>
                                 <option hidden>Select an user</option>
                                 {this.props.allUsers.slice(0).reverse().map((user, index) => 
                                 
