@@ -15,8 +15,6 @@ class User extends React.Component {
             newName:'',
             //stores the avatar of the new user being added
             newAvatar:'',
-            //stores all the users
-            users:[],
             //stores the messages to be displayed (success and error)
             messages:[],
             //stores the value to be attributed to the 'display' property of the result div
@@ -28,22 +26,6 @@ class User extends React.Component {
         this.handleNameChange = this.handleNameChange.bind(this); // refers to this of User
         this.handleAvatarChange = this.handleAvatarChange.bind(this); // refers to this of User
         this.handleShowUsers = this.handleShowUsers.bind(this); // refers to this of User
-    }
-    
-    //checks for updates in the props users
-    componentDidUpdate(prevProps, prevState) {
-        
-        //check if props users has change
-        if(prevProps.allUsers != this.props.allUsers){
-            
-            this.setState({
-                
-                users:this.props.allUsers
-                
-            }) 
-            
-        }
-        
     }
  
     //tracks the change in the name field, if the user is interacting with the field, the previous success or validation error message will be deleted
@@ -70,7 +52,7 @@ class User extends React.Component {
             newAvatar:event.target.value,
             messages:messagesArray
             
-        })       
+        })   
         
     }
     
@@ -93,12 +75,6 @@ class User extends React.Component {
         //if there is no error
         .then(userSaved => {
             
-            //clone the previous list of users
-            let updatedList = this.state.users.slice(0);
-            
-            //push the new user into the list
-            updatedList.push(userSaved.data)
-            
             //create a new array of messages (success or error) to replace the old one
             let messagesArray = [];
             
@@ -110,10 +86,12 @@ class User extends React.Component {
                 
                 newName:'',
                 newAvatar:'',
-                users:updatedList,
                 messages:messagesArray
                 
             })
+            
+            //update allUsers prop in App
+            this.props.allUsersUpdate(event);
             
         })
         //if there are errors
@@ -159,6 +137,7 @@ class User extends React.Component {
         }
         
         //render the user form and the list of users
+        //avatar field: onInput was chosen since onChange was not updating the the stated when pasting URLs to add users multiple times in a row
         return <>
             
             <div className='user'>
@@ -169,7 +148,7 @@ class User extends React.Component {
                             <label htmlFor='name'>Name:</label>
                             <input type='text' placeholder='Enter your name' id='name' name='name' onChange={this.handleNameChange} />
                             <label htmlFor='avatar'>Avatar:</label>
-                            <input type='text' placeholder='Enter the URL to your avatar image' id='avatar' name='avatar' onChange={this.handleAvatarChange}/>
+                            <input type='text' placeholder='Enter the URL to your avatar image' id='avatar' name='avatar' onInput={this.handleAvatarChange}/>
                             <input className='button' type='submit' value='Submit user' />
                             {this.state.messages.map((message, index) => 
                                 
@@ -182,7 +161,7 @@ class User extends React.Component {
                 </div>
                 
                 <div className='userList' style={hidden}>
-                    {this.state.users.slice(0).reverse().map((user, index) => 
+                    {this.props.allUsers.slice(0).reverse().map((user, index) => 
                         
                         <>
                             <div className='listItem' key={index}>

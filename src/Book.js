@@ -13,8 +13,6 @@ class Book extends React.Component {
         
         this.state = {
             
-            //stores all the books
-            books:[],
             //stores the value to be attributed to the 'display' property of the result div
             result:'none',
             //stores the value to be attributed to the 'display' property of the div that displays the chosen book
@@ -28,23 +26,7 @@ class Book extends React.Component {
         
         this.handleShowBooks = this.handleShowBooks.bind(this); // refers to this of Book
         this.accessBook = this.accessBook.bind(this); // refers to this of Book
-        this.mostRecentBook = this.mostRecentBook.bind(this); // refers to this of Book
-        
-    }
-    
-    //checks for updates in the props users
-    componentDidUpdate(prevProps, prevState) {
-        
-        //check if props books has change
-        if(prevProps.allBooks != this.props.allBooks){
-            
-            this.setState({
-                
-                books:this.props.allBooks
-                
-            }) 
-            
-        }
+        //this.mostRecentBook = this.mostRecentBook.bind(this); // refers to this of Book
         
     }
     
@@ -114,18 +96,6 @@ class Book extends React.Component {
         });
         
     }
-    
-    //get array updated with recently added book from child
-    mostRecentBook(updatedArray){
-        
-        //update state, so list of all books is updated
-        this.setState({
-            
-            books:updatedArray
-            
-        })
-        
-    }
 
     render() {
         
@@ -148,7 +118,7 @@ class Book extends React.Component {
             allUsers:this.props.allUsers,
             allBooks:this.props.allBooks,
             accessBook:this.accessBook,
-            mostRecentBook:this.mostRecentBook
+            allBooksUpdate:this.props.allBooksUpdate
             
         };
         
@@ -172,7 +142,7 @@ class Book extends React.Component {
                 </div>
                 
                 <div className='bookList' style={hidden}>
-                    {this.state.books.slice(0).reverse().map((book, index) => 
+                    {this.props.allBooks.slice(0).reverse().map((book, index) => 
                         
                         <>
                             <a aria-label={book.title} className='listItem' key={index} onClick={() => this.accessBook(book._id)}>

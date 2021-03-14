@@ -24,6 +24,9 @@ class App extends React.Component {
             
         }
         
+        this.allUsersUpdate = this.allUsersUpdate.bind(this); // refers to this of App
+        this.allBooksUpdate = this.allBooksUpdate.bind(this); // refers to this of App
+        
     }
     
     //method that is called only after the prop and states have been updated
@@ -54,6 +57,39 @@ class App extends React.Component {
         .catch(error => console.log(error));
         
     }
+    
+    allUsersUpdate(event){
+        
+        //all users
+        axios.get('/api/v1/users')
+        .then (newUsersList => {
+            
+            this.setState({
+                
+                allUsers:newUsersList.data
+                
+            });
+            
+        })    
+        .catch(error => console.log(error));
+        
+    }
+    
+    allBooksUpdate(event){
+        
+        //all books
+        axios.get('/api/v1/books')
+        .then (newBooksList => {
+            
+            this.setState({
+                
+                allBooks:newBooksList.data
+                
+            });
+            
+        })    
+        .catch(error => console.log(error));
+    }
 
     //render method is how we create what is seen in the screen
     render() {
@@ -62,14 +98,12 @@ class App extends React.Component {
             
             <Header />
             <div className='wrapper'>
-                <User allUsers={this.state.allUsers}/>
-                <Book allBooks={this.state.allBooks} allUsers={this.state.allUsers}/>
+                <User allUsers={this.state.allUsers} allUsersUpdate={this.allUsersUpdate}/>
+                <Book allBooks={this.state.allBooks} allUsers={this.state.allUsers} allBooksUpdate={this.allBooksUpdate}/>
             </div>
             <Footer />
             
         </>;
-            
-
         
     }    
     

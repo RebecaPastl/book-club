@@ -11,62 +11,30 @@ class BookAdd extends React.Component {
         
         this.state = {
             
-            //stores all the users (possible owners)
-            owners:[],
-            //stores all the books
-            books:[],
             //stores new book title
-            newTitle:'',
+            newTitle:undefined,
             //stores new book author
-            newAuthor:'',
+            newAuthor:undefined,
             //stores new book cover
-            newCover:'',
+            newCover:undefined,
             //stores new book owner
-            newOwner:'',
+            newOwner:undefined,
             //stores new book availability (trade, borrowing or both)
-            newAvailability:'',
+            newAvailability:undefined,
             //stores the messages to be displayed (success and error)
             messages:[],
             //stores the value to be attributed to the 'display' property of the recently added book div
             result: 'none',
-            //book ID of the most recently added book, to be used on the <a> tag that calls the function to exhibit the information about the chosen book
-            bookId:''
             
         }
         
         this.handleBookSubmit = this.handleBookSubmit.bind(this); // refers to this of Book Add
-        this.handleChange = this.handleChange.bind(this);
-        
-    }
-    
-    componentDidUpdate(prevProps, prevState) {
-        
-        //check if props users has change
-        if(prevProps.allUsers != this.props.allUsers){
-            
-            this.setState({
-                
-                owners:this.props.allUsers
-                
-            }) 
-            
-        }
-        
-        //check if props books has change
-        if(prevProps.allBooks != this.props.allBooks){
-            
-            this.setState({
-                
-                books:this.props.allBooks
-                
-            }) 
-            
-        }
+        this.handleChange = this.handleChange.bind(this); // refers to this of Book Add
         
     }
     
     //tracjs changes in all input fields
-    /*from Christopher Davies at Stack Overflow (https://www.pexels.com/photo/books-in-black-wooden-book-shelf-159711)*/
+    /*from Christopher Davies at Stack Overflow (https://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler)*/
     handleChange(event){
         
         let messagesArray = [];
@@ -104,12 +72,6 @@ class BookAdd extends React.Component {
         //if there is no error
         .then(bookSaved => {
             
-            //clone the previous list of books
-            let updatedList = this.state.books.slice(0);
-            
-            //push the new book into the list
-            updatedList.push(bookSaved.data)
-            
             //create a new array of messages (success or error) to replace the old one
             let messagesArray = [];
             
@@ -119,15 +81,18 @@ class BookAdd extends React.Component {
             //update the state
             this.setState({
                 
-                books:updatedList,
-                bookId:bookSaved.data._id,
+                newTitle:'',
+                newAuthor:'',
+                newCover:'',
+                newOwner:'',
+                newAvailability:'',
                 result: 'block', 
                 messages:messagesArray
                 
             })
             
-            //send most recent list to parent component (update list of books displayed)
-            this.props.mostRecentBook(updatedList)
+            //update list of books
+            this.props.allBooksUpdate()
             
         })
         //if there are errors
@@ -160,6 +125,7 @@ class BookAdd extends React.Component {
         }
         
         //render the add book form and the most recent book
+        //cover field: onInput was chosen since onChange was not updating the the stated when pasting URLs to add books multiple times in a row
         return <>        
             
             <div className='book'>
@@ -170,11 +136,11 @@ class BookAdd extends React.Component {
                         <label htmlFor='author'>Author:</label>
                         <input type='text' placeholder='Enter book author' id='author' name='newAuthor' onChange={this.handleChange}/>
                         <label htmlFor='cover'>Cover:</label>
-                        <input type='text' placeholder='Paste an URL for the book cover' id='cover' name='newCover' onChange={this.handleChange}/>                        
+                        <input type='text' placeholder='Paste an URL for the book cover' id='cover' name='newCover' onInput={this.handleChange}/>                        
                         <label htmlFor='owner'>Owner:</label>
                         <select name='newOwner' id='owner' onChange={this.handleChange}>
                             <option hidden>Select an user</option>
-                            {this.state.owners.slice(0).reverse().map((owner, index) => 
+                            {this.props.allUsers.slice(0).reverse().map((owner, index) => 
                                 
                                 <>
                                   <option key={index} value={owner.name}>{owner.name}</option>
@@ -198,18 +164,6 @@ class BookAdd extends React.Component {
                             
                         )}
                 </form>
-                <div className='listItem' style={hidden}>
-                    <fieldset>
-                        <legend>Most recent book</legend>
-                        <a aria-label={this.state.newTitle} onClick={() => this.props.accessBook(this.state.bookId)}>
-                            <img className='cover' src={this.state.newCover} alt={this.state.newTitle}/>
-                            <h2>{this.state.newTitle}</h2>
-                            <p>{this.state.newAuthor}</p>
-                            <p>Owned by: {this.state.newOwner}</p>
-                            <p>Available for: {this.state.newAvailability}</p>
-                        </a>
-                    </fieldset>
-                </div>
             </div>
             
         </>

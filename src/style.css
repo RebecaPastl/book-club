@@ -261,6 +261,10 @@ select {
     background-color:var(--secondary-background-colour);
 }
 
+.footer p {
+    font-size:10px;
+}
+
 
 
 

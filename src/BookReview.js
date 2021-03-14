@@ -12,15 +12,9 @@ class BookReview extends React.Component {
         this.state = {
             
             //stores the text of the new review being added
-            reviewText:'',
+            reviewText:undefined,
             //stores the user of the new review being added
-            reviewUser:'',
-            //stores all the users (to be used in the dropdown list)
-            users:[],
-            //stores current book
-            book:[],
-            //stores id of the current book (chosen book)
-            bookId:'',
+            reviewUser:undefined,
             //stores all the reviews of the current book (chosen book)
             allReviews:[],
             //stores the messages to be displayed (success and error)
@@ -36,33 +30,6 @@ class BookReview extends React.Component {
     
     //checks for updates in the props users
     componentDidUpdate(prevProps, prevState) {
-        
-        //check if props users has changed
-        if(prevProps.allUsers != this.props.allUsers){
-            
-            this.setState({
-                
-                users:this.props.allUsers
-                
-            }) 
-            
-        }
-        
-        //check if props current book has changed
-        if(prevProps.currentBook != this.props.currentBook){
-            
-            let messagesArray = [];
-            
-            this.setState({
-                
-                book: this.props.currentBook,
-                bookId:this.props.currentBook[1],
-                messages:messagesArray
-                
-                
-            }) 
-            
-        }
         
         //check if props reviews has changed
         if(prevProps.currentReview != this.props.currentReview){
@@ -114,14 +81,14 @@ class BookReview extends React.Component {
         //create a new review
         let newReview = {
             
-            id: this.state.book[1],
+            id: this.props.currentBook[1],
             text: this.state.reviewText, 
             user: this.state.reviewUser
             
         }
         
         //access chosen book, crate a new review
-        axios.post(`api/v1/books/${this.state.bookId}`, newReview)
+        axios.post(`api/v1/books/${this.props.currentBook[1]}`, newReview)
         //if there is no error
         .then(reviewSaved => {
             
@@ -181,7 +148,7 @@ class BookReview extends React.Component {
                         <div className='reviewFloat'>
                             <select className='reviewUser' onChange={this.handleUserChange}>
                                 <option hidden>Select an user</option>
-                                {this.state.users.slice(0).reverse().map((user, index) => 
+                                {this.props.allUsers.slice(0).reverse().map((user, index) => 
                                 
                                     <>
                                       <option key={index}>{user.name}</option>
