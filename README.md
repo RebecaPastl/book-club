@@ -1,5 +1,9 @@
 # Book Club
 
+Try Book Club 2.0!!
+
+https://bookclub.494906.xyz/
+
 ## Table of Contents
 * [Description](#description)
 * [Requirements](#requirements)
